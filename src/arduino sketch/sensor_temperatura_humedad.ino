@@ -1,7 +1,7 @@
 #include <DHT.h>
-#include <DHT_U.h>
 
-const byte sensor = 3;
+byte sensor = 2;
+
 DHT dht(sensor, DHT11);
 
 void setup()
@@ -13,9 +13,11 @@ void setup()
 
 void loop()
 {
-    Serial.print(dht.readTemperature());
+    float temperature = dht.readTemperature();
+    float humidity = dht.readHumidity();
+    Serial.print(temperature);
     Serial.print(" ");
-    Serial.print(dht.readHumidity());
-    Serial.println();
+    Serial.print(humidity);
+    Serial.println("");
     delay(3000);
 }
