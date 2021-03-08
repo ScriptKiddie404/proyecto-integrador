@@ -18,16 +18,20 @@ port.on("open", () => {
 });
 
 // El método con evento 'data' se llama siempre que se recibe un dato del puerto serial
+let counter = 0;
 parser.on('data', data => {
 
     const [temperature, humidity] = data.split(' ');
 
     console.clear();
-    const registro = {
+    counter++;
+    const record = {
         temperature,
         humidity
     };
 
+    console.log(okColor(`Total records captured: ${counter}`));
+    console.table(record);
 
 });
 
