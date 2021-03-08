@@ -1,13 +1,15 @@
+// Modificar estos datos acorde al usuario:
+const arduinoPort = 'COM3'
+const user = 'Fernando';
+
 //Chalk es usada sólo para brindar estética a la salida de consola
 const chalk = require('chalk');
 const okColor = chalk.bgGreenBright.black;
-const tempColor = chalk.bgRedBright.black;
-const humColor = chalk.bgCyanBright.black;
 
 // Serial Port communication
 const SerialPort = require('serialport');
 const Readline = require('@serialport/parser-readline');
-const port = new SerialPort('COM3', { baudRate: 9600 });
+const port = new SerialPort(arduinoPort, { baudRate: 9600 });
 const parser = port.pipe(new Readline({ delimiter: '\n' }));
 
 
@@ -21,13 +23,15 @@ port.on("open", () => {
 let counter = 0;
 parser.on('data', data => {
 
-    const [temperature, humidity] = data.split(' ');
-
+    const [temperature, humidity] = data.replace(/\r/ig, '').split(' ');
+    const date = new Date().toISOString();
     console.clear();
     counter++;
     const record = {
+        user,
         temperature,
-        humidity
+        humidity,
+        date
     };
 
     console.log(okColor(`Total records captured: ${counter}`));
