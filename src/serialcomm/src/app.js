@@ -2,8 +2,8 @@
 const arduinoPort = 'COM3'
 const user = 'Fernando';
 
-// Importar la base de datos:
-// const mongoose = require('./db/mongoose');
+// Importar el esquema de la base de datos:
+const SensorRecord = require('./models/SensorRecord');
 
 //Chalk es usada sólo para brindar estética a la salida de consola
 const chalk = require('chalk');
@@ -23,22 +23,14 @@ port.on("open", () => {
 });
 
 // El método con evento 'data' se llama siempre que se recibe un dato del puerto serial
-let counter = 0;
-parser.on('data', data => {
+parser.on('data', (data) => {
 
     const [temperature, humidity] = data.replace(/\r/ig, '').split(' ');
     const date = new Date().toISOString();
     console.clear();
-    counter++;
-    const record = {
-        user,
-        temperature,
-        humidity,
-        date
-    };
 
-    console.log(okColor(`Total records captured: ${counter}`));
-    console.table(record);
+    console.log(data);
+    // console.log(okColor(`Total records captured: ${counter}`));
+    // console.table(record);
 
 });
-
