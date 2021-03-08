@@ -19,8 +19,15 @@ port.on("open", () => {
 
 // El método con evento 'data' se llama siempre que se recibe un dato del puerto serial
 parser.on('data', data => {
+
     const [temperature, humidity] = data.split(' ');
-    console.log(temperature);
-    console.log(humidity);
+
+    console.clear();
+    const registro = {
+        temperature,
+        humidity
+    };
+
+
 });
 
