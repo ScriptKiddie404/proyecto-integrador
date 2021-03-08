@@ -3,6 +3,7 @@ const arduinoPort = 'COM3'
 const user = 'Fernando';
 
 // Importar el esquema de la base de datos:
+require('./models/SensorRecord');
 const SensorRecord = require('./models/SensorRecord');
 
 //Chalk es usada sólo para brindar estética a la salida de consola
@@ -23,7 +24,7 @@ port.on("open", () => {
 });
 
 // El método con evento 'data' se llama siempre que se recibe un dato del puerto serial
-parser.on('data', (data) => {
+parser.on('data', async (data) => {
 
     const [temperature, humidity] = data.replace(/\r/ig, '').split(' ');
     const date = new Date().toISOString();
