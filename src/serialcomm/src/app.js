@@ -29,9 +29,20 @@ parser.on('data', async (data) => {
     const [temperature, humidity] = data.replace(/\r/ig, '').split(' ');
     const date = new Date().toISOString();
     console.clear();
-
     console.log(data);
-    // console.log(okColor(`Total records captured: ${counter}`));
-    // console.table(record);
+
+    const sensorData = new SensorRecord({
+        user: user,
+        date: date,
+        temperature: temperature,
+        humidity: humidity
+    });
+
+    // Guardamos en MongoDB:
+    try {
+        await sensorData.save();
+    } catch (error) {
+        console.log(error);
+    }
 
 });
