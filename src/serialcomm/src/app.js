@@ -1,7 +1,8 @@
 //Chalk es usada sólo para brindar estética a la salida de consola
 const chalk = require('chalk');
 const okColor = chalk.bgGreenBright.black;
-
+const tempColor = chalk.bgRedBright.black;
+const humColor = chalk.bgCyanBright.black;
 
 // Serial Port communication
 const SerialPort = require('serialport');
@@ -18,6 +19,8 @@ port.on("open", () => {
 
 // El método con evento 'data' se llama siempre que se recibe un dato del puerto serial
 parser.on('data', data => {
-    console.log(data);
+    const [temperature, humidity] = data.split(' ');
+    console.log(temperature);
+    console.log(humidity);
 });
 
