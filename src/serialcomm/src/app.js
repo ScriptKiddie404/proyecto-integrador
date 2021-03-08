@@ -1,6 +1,6 @@
 // Modificar estos datos acorde al usuario:
-const arduinoPort = 'COM3'
-const user = 'Fernando';
+const arduinoPort = 'COM3'; //cambiar al adecuado.
+const user = 'Fernando'; //cambiar al usuario adecuado.
 
 // Importar el esquema de la base de datos:
 require('./db/mongoose');
