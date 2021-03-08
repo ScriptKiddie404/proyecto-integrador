@@ -2,7 +2,7 @@
 const arduinoPort = 'COM3'; //cambiar al adecuado.
 const user = 'Fernando'; //cambiar al usuario adecuado.
 
-// Importar el esquema de la base de datos:
+// Importar el esquema de la base de datos y la bd:
 require('./db/mongoose');
 const SensorRecord = require('./models/SensorRecord');
 
