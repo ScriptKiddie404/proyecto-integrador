@@ -1,26 +1,36 @@
+// ============================================================= //
 // Modificar estos datos acorde al usuario:
 const arduinoPort = 'COM3'; //cambiar al adecuado.
 const user = 'Fernando'; //cambiar al usuario adecuado.
+// ============================================================= //
 
-// Importar el esquema de la base de datos y la bd:
+// ============================================================= //
+// Importar el esquema de la base de datos y la conexión.
 require('./db/mongoose');
 const SensorRecord = require('./models/SensorRecord');
+// ============================================================= //
 
 
+// ============================================================= //
 // Serial Port communication
 const SerialPort = require('serialport');
 const Readline = require('@serialport/parser-readline');
 const port = new SerialPort(arduinoPort, { baudRate: 9600 });
 const parser = port.pipe(new Readline({ delimiter: '\n' }));
+// ============================================================= //
 
 
+// ============================================================= //
 // Este método se llama una vez que inicia la comunicación.
 port.on("open", () => {
     console.clear();
     console.log("Comunicación serializada iniciada...");
 });
+// ============================================================= //
 
-// El método con evento 'data' se llama siempre que se recibe un dato del puerto serial
+
+// ============================================================= //
+// Se llama siempre que se recibe info. en el puerto serial.
 parser.on('data', async (data) => {
 
     const [temperature, humidity] = data.replace(/\r/ig, '').split(' ');
@@ -42,3 +52,4 @@ parser.on('data', async (data) => {
     }
 
 });
+// ============================================================= //
