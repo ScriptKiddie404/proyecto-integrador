@@ -31,3 +31,11 @@ Recordar que previamente también se debe cargar el [sketch](arduino%20sketch/se
 
 En caso de usuarios linux, cambiar el puerto COM3 por el puerto adecuado en el archivo [principal](src/app.js) de la aplicación.
 
+Otras consideraciones para interactuar con la base de datos: es necesario instalar dotenv para manipular las variables de entorno que serán utilizadas para realizar la conexión:
+
+```bash
+npm i dotenv
+```
+
+En caso de que no se quiera hacer esto y configurar, sólo es necesario modificar en el archivo de [conexión](src/db/mongoose.js) el valor `process.env.USER` y `process.env.PASS` por los valores correspondientes.
+
