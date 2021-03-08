@@ -3,7 +3,7 @@ const arduinoPort = 'COM3'
 const user = 'Fernando';
 
 // Importar el esquema de la base de datos:
-require('./models/SensorRecord');
+require('./db/mongoose');
 const SensorRecord = require('./models/SensorRecord');
 
 //Chalk es usada sólo para brindar estética a la salida de consola
@@ -24,25 +24,45 @@ port.on("open", () => {
 });
 
 // El método con evento 'data' se llama siempre que se recibe un dato del puerto serial
-parser.on('data', async (data) => {
+// parser.on('data', (data) => {
 
-    const [temperature, humidity] = data.replace(/\r/ig, '').split(' ');
-    const date = new Date().toISOString();
-    console.clear();
-    console.log(data);
+//     const [temperature, humidity] = data.replace(/\r/ig, '').split(' ');
+//     console.clear();
+//     console.log(data);
 
-    const sensorData = new SensorRecord({
-        user: user,
-        date: date,
-        temperature: temperature,
-        humidity: humidity
-    });
+//     const sensorData = new SensorRecord({
+//         user: user,
+//         temperature: temperature,
+//         humidity: humidity
+//     });
 
-    // Guardamos en MongoDB:
+//     sensorData.save().then(() => {
+//         console.log('Registro insertado en la BD');
+//     }).catch(error => {
+//         console.log(error);
+//     })
+
+// });
+
+async function Test() {
+
+    const objeto = {
+        user: "Fernando",
+        date: new Date().toISOString(),
+        temperature: 34.23,
+        humidity: 23.1
+    }
+
+    const data = new SensorRecord(objeto);
+
     try {
-        await sensorData.save();
+        await data.save();
+        console.log("Insertado");
     } catch (error) {
         console.log(error);
     }
 
-});
+
+}
+
+Test();

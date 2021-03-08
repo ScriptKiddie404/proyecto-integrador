@@ -9,7 +9,7 @@ const SensorRecordSchema = new Schema({
     },
     date: {
         type: String,
-        required: true,
+        required: true
     },
     temperature: {
         type: String,
