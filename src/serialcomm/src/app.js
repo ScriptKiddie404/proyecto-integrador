@@ -24,45 +24,24 @@ port.on("open", () => {
 });
 
 // El método con evento 'data' se llama siempre que se recibe un dato del puerto serial
-// parser.on('data', (data) => {
+parser.on('data', async (data) => {
 
-//     const [temperature, humidity] = data.replace(/\r/ig, '').split(' ');
-//     console.clear();
-//     console.log(data);
+    const [temperature, humidity] = data.replace(/\r/ig, '').split(' ');
+    console.clear();
+    console.log(`New record on database - T: ${temperature} - H: ${humidity}`);
 
-//     const sensorData = new SensorRecord({
-//         user: user,
-//         temperature: temperature,
-//         humidity: humidity
-//     });
 
-//     sensorData.save().then(() => {
-//         console.log('Registro insertado en la BD');
-//     }).catch(error => {
-//         console.log(error);
-//     })
-
-// });
-
-async function Test() {
-
-    const objeto = {
-        user: "Fernando",
+    const sensorData = new SensorRecord({
+        user: user,
         date: new Date().toISOString(),
-        temperature: 34.23,
-        humidity: 23.1
-    }
-
-    const data = new SensorRecord(objeto);
+        temperature: temperature,
+        humidity: humidity
+    });
 
     try {
-        await data.save();
-        console.log("Insertado");
+        await sensorData.save();
     } catch (error) {
         console.log(error);
     }
 
-
-}
-
-Test();
+});
