@@ -9,11 +9,14 @@ const Readline = require('@serialport/parser-readline');
 const port = new SerialPort('COM3', { baudRate: 9600 });
 const parser = port.pipe(new Readline({ delimiter: '\n' }));
 
+
+// Este método se llama una vez que inicia la comunicación.
 port.on("open", () => {
     console.clear();
     console.log(okColor("Comunicación serializada iniciada..."));
 });
 
+// El método con evento 'data' se llama siempre que se recibe un dato del puerto serial
 parser.on('data', data => {
     console.log(data);
 });
