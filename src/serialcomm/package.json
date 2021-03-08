@@ -16,7 +16,7 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "dotenv": "^8.2.0",
-    "mongoose": "^5.11.19",
+    "mongoose": "^5.11.0",
     "serialport": "^9.0.7"
   }
 }

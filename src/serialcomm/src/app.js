@@ -2,6 +2,9 @@
 const arduinoPort = 'COM3'
 const user = 'Fernando';
 
+// Importar la base de datos:
+// const mongoose = require('./db/mongoose');
+
 //Chalk es usada sólo para brindar estética a la salida de consola
 const chalk = require('chalk');
 const okColor = chalk.bgGreenBright.black;
