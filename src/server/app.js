@@ -1,5 +1,3 @@
-console.log(__dirname + '/src/public');
-
 // Se importa la base de datos para la conexión:
 require('./src/db/mongoose');
 const { response } = require('express');
