@@ -2,10 +2,6 @@ const express = require('express');
 const SensorRecord = require('../models/SensorRecord');
 const router = new express.Router();
 
-router.get('/', (req, res) => {
-    res.send('hola putito');
-});
-
 // All records
 router.get('/records', async (req, res) => {
     try {
