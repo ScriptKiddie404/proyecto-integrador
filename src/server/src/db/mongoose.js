@@ -5,4 +5,4 @@ mongoose.connect(`mongodb+srv://${process.env.USER}:${process.env.PASS}@cluster0
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
-});
+}).catch(error => console.log(error));
