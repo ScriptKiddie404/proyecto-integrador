@@ -6,7 +6,6 @@ Este pequeña aplicación es la encargada de realizar la comunicación serial en
 * SerialPort
 * Mongoose
 * Mongodb
-* Dotenv
 
 Para instalarla sólo es necesario (como ya se mencionó en el index) ejecutar el siguiente comando:
 

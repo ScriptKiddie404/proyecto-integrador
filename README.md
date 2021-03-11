@@ -26,4 +26,4 @@ npm start
 ## Contenido
 Aquí se enlistan las distintas aplicaciones que contempla el proyecto, por favor usar este índice para guiarse, cada aplicación tiene su propio `README.md` con las instrucciones necesarias para realizar la intalación y/o configuración.
 1. [Comunicación Serial](src/serialcomm/README.md)
-2. 
+2. [Servidor & API](src/server/README.md)
