@@ -38,8 +38,29 @@ app.get('/records', async (req, res) => {
 // Last N records:
 app.get('/records/:n', async (req, res) => {
     const { n } = req.params;
+    const nParsed = Number.parseInt(n);
+
+    try {
+        const records = await SensorRecord.find({}).sort({ _id: -1 }).limit(nParsed);
+        res.status(200).send(records);
+    } catch (error) {
+        res.status(500).send({ error: error.message });
+    }
 
 });
+
+// Get only the last record:
+app.get('/records/last-record', async (req, res) => {
+    try {
+        const lastRecord = await SensorRecord.find({}).sort({ _id: -1 }).limit(1);
+        res.status(200).send(lastRecord);
+    } catch (error) {
+        res.status(500).send({ error: error.message });
+    }
+});
+
+
+
 
 app.listen(PORT, () => {
     console.log('Listening on port: ', PORT);
