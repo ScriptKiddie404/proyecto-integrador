@@ -1,3 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@600&family=Hind+Madurai:wght@300&family=Signika+Negative:wght@700&display=swap");
+
+/* 
+font-family: 'Cairo', sans-serif;
+font-family: 'Hind Madurai', sans-serif;
+font-family: 'Signika Negative', sans-serif;
+
+*/
 * {
   margin: 0;
   padding: 0;
@@ -5,8 +13,97 @@
 }
 
 body {
-  background-color: rgb(43, 42, 42);
-  color: white;
-  height: 100vh;
+  background-color: #fff;
+  color: black;
+  font-family: "Hind Madurai", sans-serif;
   width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5em;
+}
+
+h1 {
+  font-family: "Signika Negative", sans-serif;
+}
+
+h2 {
+  font-family: "Cairo", sans-serif;
+}
+
+pre {
+  position: relative;
+}
+
+.navbar {
+  display: flex;
+  background: rgb(49, 87, 175);
+  color: white;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  padding: 2em;
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__icon {
+  margin-right: 0.5em;
+}
+.navbar__title {
+  font-family: "Signika Negative", sans-serif;
+}
+
+.routes {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  align-items: flex-start;
+  margin-top: 1em;
+}
+
+.routes__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 95%;
+}
+
+.routes__main-title {
+  text-align: center;
+  margin-top: 1em;
+}
+
+.routes__title {
+  margin-left: 1em;
+}
+.routes__code {
+  background-color: black;
+  display: block;
+  padding: 1em;
+  margin-left: 2em;
+  margin-top: 0.5em;
+  border-radius: 5px;
+  color: white;
+}
+
+@media screen and (max-width: 500px) {
+  .routes {
+    align-items: center;
+  }
+
+  .routes__title {
+    margin: 0;
+  }
+
+  .routes__code {
+    width: 100%;
+    margin: 0;
+  }
 }

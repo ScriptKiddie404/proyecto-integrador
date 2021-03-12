@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
     <link rel="stylesheet" href="css/styles.css">
     <title>API Docs</title>
 </head>
@@ -13,17 +16,73 @@
 <body>
     <nav class="navbar">
 
+        <div class="navbar__logo">
+            <i class="fas fa-2x fa-thermometer-three-quarters navbar__icon"></i>
+            <div class="navbar__title">
+                Thermal Care API
+            </div>
+        </div>
+
     </nav>
-    <h1>API DOCUMENTATION</h1>
-    <h2>List all records</h2>
-    <h2>List the last N records</h2>
-    <h2>List the last record</h2>
-    <h2>List all temperatures</h2>
-    <h2>List the last N temperatures</h2>
-    <h2>List the last temperature</h2>
-    <h2>List all humidity records</h2>
-    <h2>List the last N humidity records</h2>
-    <h2>List the last humidity record</h2>
+
+    <h1 class="routes__main-title">API DOCUMENTATION</h1>
+
+    <section class="routes">
+        <div class="routes__item">
+            <h2 class="routes__title">List all records</h2>
+            <code class="routes__code">
+                    GET http://www.example.com/records
+            </code>
+        </div>
+        <div class="routes__item">
+            <h2 class="routes__title">List the last N records</h2>
+            <code class="routes__code">
+                    GET http://www.example.com/records/N
+            </code>
+        </div>
+        <div class="routes__item">
+            <h2 class="routes__title">Show last record</h2>
+            <code class="routes__code">
+                    GET http://www.example.com/last-record
+            </code>
+        </div>
+        <div class="routes__item">
+            <h2 class="routes__title">List all temperatures</h2>
+            <code class="routes__code">
+                    GET http://www.example.com/temperatures
+            </code>
+        </div>
+        <div class="routes__item">
+            <h2 class="routes__title">List the last N temperatures</h2>
+            <code class="routes__code">
+                    GET http://www.example.com/temperatures/N
+            </code>
+        </div>
+        <div class="routes__item">
+            <h2 class="routes__title">Show the last temperature</h2>
+            <code class="routes__code">
+                    GET http://www.example.com/last-temperature
+            </code>
+        </div>
+        <div class="routes__item">
+            <h2 class="routes__title">List all humidity records</h2>
+            <code class="routes__code">
+                    GET http://www.example.com/humidity
+            </code>
+        </div>
+        <div class="routes__item">
+            <h2 class="routes__title">List the last N humidity records</h2>
+            <code class="routes__code">
+                    GET http://www.example.com/humidity/N
+            </code>
+        </div>
+        <div class="routes__item">
+            <h2 class="routes__title">Show the last humidity record</h2>
+            <code class="routes__code">
+                    GET http://www.example.com/humidity/last-humidity
+            </code>
+        </div>
+    </section>
 </body>
 
 </html>
