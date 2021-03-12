@@ -29,9 +29,9 @@ Primero que nada se debe poseer un circuito armado con la siguiente configuraci�
 
 Recordar que previamente también se debe cargar el [sketch](arduino%20sketch/sensor_temperatura_humedad.ino) del circuito a la placa Arduino.
 
-En caso de usuarios linux, cambiar el puerto COM3 por el puerto adecuado en el archivo [principal](src/app.js) de la aplicación.
+En caso de usuarios linux o MAC, cambiar el puerto `COM3` por el puerto adecuado en el archivo [principal](src/app.js) de la aplicación.
 
-Otras consideraciones para interactuar con la base de datos: es necesario instalar dotenv para manipular las variables de entorno que serán utilizadas para realizar la conexión:
+Otras consideraciones para interactuar con la base de datos: es necesario instalar `dotenv` para manipular las variables de entorno que serán utilizadas para realizar la conexión:
 
 ```bash
 npm i dotenv

@@ -10,7 +10,7 @@ Sólo deben de hacer un git clone de este repositorio de la siguiente manera:
 git clone https://github.com/ScriptKiddie404/proyecto-integrador.git
 ```
 
-Una vez realizada la descarga sólo deberán instalar las dependencias de cada proyecto, por ejemplo, para probar el proyecto `Serialcomm` ingrsan a `src/serialcomm` desde su consola y ejecutan:
+Una vez realizada la descarga sólo deberán instalar las dependencias de cada proyecto, por ejemplo, para probar el proyecto `Serialcomm` ingresan a `src/serialcomm` desde su consola y ejecutan:
 
 ```bash
 npm install
