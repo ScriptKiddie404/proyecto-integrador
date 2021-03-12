@@ -1,4 +1,4 @@
-# Serialcomm
+# Serial Communication
 
 ## Instrucciones
 Este pequeña aplicación es la encargada de realizar la comunicación serial entre la placa Arduino y la base de datos (MongoDB). Para su realización se usaron la siguientes dependencias:
