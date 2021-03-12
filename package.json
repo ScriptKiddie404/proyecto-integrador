@@ -1,5 +1,5 @@
 {
-  "name": "final",
+  "name": "proyecto-thermal-care",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,6 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Efrain Fernando Bejarano Puentes",
   "license": "ISC"
 }

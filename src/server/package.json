@@ -7,7 +7,7 @@
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
-  "author": "",
+  "author": "Efrain Fernando Bejarano Puentes",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",

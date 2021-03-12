@@ -1,5 +1,5 @@
 {
-  "name": "serialcomm",
+  "name": "serial-communication",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -8,7 +8,7 @@
     "dev": "nodemon ./src/app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Efrain Fernando Bejarano Puentes",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.7"
