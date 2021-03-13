@@ -65,7 +65,6 @@ parser.on('data', async (data) => {
             body: JSON.stringify({ sensorType: 'humidity', humidity: humidityParsed, temperature: temperatureParsed }),
             headers: { 'Content-Type': 'application/json' }
         });
-        console.log(response);
     }
 
     if (temperatureParsed > temperatureLimit) {
@@ -75,7 +74,6 @@ parser.on('data', async (data) => {
             body: JSON.stringify({ sensorType: 'temperature', humidity: humidityParsed, temperature: temperatureParsed }),
             headers: { 'Content-Type': 'application/json' }
         });
-        console.log(response);
     }
 
 
