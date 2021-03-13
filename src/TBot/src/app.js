@@ -69,6 +69,10 @@ bot.action('humidity', async (ctx) => {
 
 //=====================================================================================
 
+app.get('/', async (req, res) => {
+    res.status(200).send("This app it's working!!");
+});
+
 app.post('/send-alert', async (req, res) => {
     let users;
     const { sensorType, temperature, humidity } = req.body;
