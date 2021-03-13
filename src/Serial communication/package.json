@@ -17,6 +17,7 @@
     "dotenv": "^8.2.0",
     "mongodb": "^3.6.4",
     "mongoose": "^5.11.0",
+    "node-fetch": "^2.6.1",
     "serialport": "^9.0.7"
   }
 }

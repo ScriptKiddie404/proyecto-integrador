@@ -2,6 +2,8 @@
 // Modificar estos datos acorde al usuario:
 const arduinoPort = 'COM3'; //cambiar al adecuado.
 const user = 'Fernando'; //cambiar al usuario adecuado.
+const temperatureLimit = 50; //Change for any value you want
+const humidityLimit = 70; //Change for any value you want
 // ============================================================= //
 
 // ============================================================= //
@@ -9,6 +11,9 @@ const user = 'Fernando'; //cambiar al usuario adecuado.
 require('./db/mongoose');
 const SensorRecord = require('./models/SensorRecord');
 // ============================================================= //
+
+// ==================== NODE FETCH ==============================//
+const fetch = require('node-fetch');
 
 
 // ============================================================= //
@@ -35,8 +40,17 @@ parser.on('data', async (data) => {
 
     const [temperature, humidity] = data.replace(/\r/ig, '').split(' ');
     console.clear();
+    let temperatureParsed = Number.parseFloat(temperature);
+    let humidityParsed = Number.parseFloat(humidity);
     console.log(`New record on database - T: ${temperature} - H: ${humidity}`);
 
+    if (humidityParsed > humidityLimit) {
+
+    }
+
+    if (temperatureParsed > temperatureLimit) {
+
+    }
 
     const sensorData = new SensorRecord({
         user: user,
