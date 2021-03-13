@@ -9,7 +9,8 @@ const express = require('express');
 const app = express();
 const expressPort = process.env.PORT || 4000;
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(__dirname + '/public'));
 // ===================================================== //
 
 //================= MONGO STUFF =========================///
@@ -70,7 +71,7 @@ bot.action('humidity', async (ctx) => {
 //=====================================================================================
 
 app.get('/', async (req, res) => {
-    res.status(200).send("This app it's working!!");
+    res.status(200).sendFile(__dirname + '/public/index.html');
 });
 
 app.post('/send-alert', async (req, res) => {
