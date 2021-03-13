@@ -2,7 +2,7 @@ require('dotenv').config();
 // ================= BOT REQUIREMENTS ===================== //
 const fetch = require('node-fetch');
 const { Telegraf } = require('telegraf');
-const bot = new Telegraf(process.env.BOT_TOKEN);
+const bot = new Telegraf(process.env.HEROKU_BOT_TOKEN || process.env.BOT_TOKEN);
 
 // ================ EXPRESS REQUIREMENTS ================ //
 const express = require('express');
