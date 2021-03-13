@@ -1,0 +1,22 @@
+//============================== SERVER ===================================//
+
+// bot.command(['temperature', 'TEMPERATURE',], async (ctx) => {
+//     const response = await fetch('https://tc-utch-api.herokuapp.com/last-temperature');
+//     const data = await response.json();
+//     ctx.reply(data[0]['temperature'] + ' °C');
+// });
+
+// bot.command(['humidity'], async (ctx) => {
+//     const response = await fetch('https://tc-utch-api.herokuapp.com/last-humidity');
+//     const data = await response.json();
+//     ctx.reply(data[0]['humidity'] + '%');
+// });
+
+
+// ==================================================
+//Intervalo de prueba:
+// ==================================================
+// Intercambiar 1379798252 por el ID de la base de datos.
+// setInterval(() => {
+//     bot.telegram.sendMessage(1379798252, "hola mundo!");
+// }, 5000);
