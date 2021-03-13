@@ -42,22 +42,6 @@ parser.on('data', async (data) => {
     console.clear();
     let temperatureParsed = Number.parseFloat(temperature);
     let humidityParsed = Number.parseFloat(humidity);
-    console.log(`New record on database - T: ${temperature} - H: ${humidity}`);
-
-    if (humidityParsed > humidityLimit) {
-        console.log('Hummidity limit reached');
-        const response = await fetch('https://localhost:4000/send-alert', {
-            method: 'POST',
-            body: JSON.stringify({ humidity: humidityParsed }),
-            headers: { 'Content-Type': 'application/json' }
-        });
-        console.log(`Mensaje enviado a telegram`);
-        console.log(response);
-    }
-
-    if (temperatureParsed > temperatureLimit) {
-        console.log('Temperature limit reached');
-    }
 
     const sensorData = new SensorRecord({
         user: user,
@@ -71,6 +55,29 @@ parser.on('data', async (data) => {
     } catch (error) {
         console.log(error);
     }
+
+    console.log(`New record on database - T: ${temperature} - H: ${humidity}`);
+
+    if (humidityParsed > humidityLimit) {
+        console.log('Hummidity limit reached');
+        const response = await fetch('http://localhost:4000/send-alert', {
+            method: 'POST',
+            body: JSON.stringify({ sensorType: 'humidity', humidity: humidityParsed, temperature: temperatureParsed }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+        console.log(response);
+    }
+
+    if (temperatureParsed > temperatureLimit) {
+        console.log('Temperature limit reached');
+        const response = await fetch('http://localhost:4000/send-alert', {
+            method: 'POST',
+            body: JSON.stringify({ sensorType: 'temperature', humidity: humidityParsed, temperature: temperatureParsed }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+        console.log(response);
+    }
+
 
 });
 // ============================================================= //
