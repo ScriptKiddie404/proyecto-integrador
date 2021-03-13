@@ -6,6 +6,11 @@ const temperatureLimit = 50; //Change for any value you want
 const humidityLimit = 70; //Change for any value you want
 // ============================================================= //
 
+
+//=========== CAMBIAR ESTA VARIABLE PARA PRODUCCIÓN O DEV ===============//
+const entorno = 'produccion'; //dev o produccion
+const botURL = entorno === 'dev' ? process.env.DEV_URL : process.env.PROD_URL;
+
 // ============================================================= //
 // Importar el esquema de la base de datos y la conexión.
 require('./db/mongoose');
@@ -60,7 +65,7 @@ parser.on('data', async (data) => {
 
     if (humidityParsed > humidityLimit) {
         console.log('Hummidity limit reached');
-        const response = await fetch('http://localhost:4000/send-alert', {
+        const response = await fetch(botURL, {
             method: 'POST',
             body: JSON.stringify({ sensorType: 'humidity', humidity: humidityParsed, temperature: temperatureParsed }),
             headers: { 'Content-Type': 'application/json' }
@@ -69,7 +74,7 @@ parser.on('data', async (data) => {
 
     if (temperatureParsed > temperatureLimit) {
         console.log('Temperature limit reached');
-        const response = await fetch('http://localhost:4000/send-alert', {
+        const response = await fetch(botURL, {
             method: 'POST',
             body: JSON.stringify({ sensorType: 'temperature', humidity: humidityParsed, temperature: temperatureParsed }),
             headers: { 'Content-Type': 'application/json' }
