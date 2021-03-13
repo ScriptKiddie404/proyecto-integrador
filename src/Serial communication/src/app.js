@@ -1,50 +1,54 @@
-// ============================================================= //
-// Modificar estos datos acorde al usuario:
+// =========================================================================================== //
+// ================================== VARIABLES DE ENTORNO =================================== //
+// =========================================================================================== //
+require('dotenv').config();
+// =========================================================================================== //
+//========================== CAMBIAR ESTA VARIABLE PARA PRODUCCIÓN O DEV ===================== //
+// =========================================================================================== //
+const enviroment = 'produccion'; //dev o produccion
+const botURL = enviroment === 'dev' ? process.env.DEV_URL : process.env.PROD_URL;
+// =========================================================================================== //
+// ==================================== CONFIGURACIÓN CHALK ================================== //
+const chalk = require('chalk');
+const alertColor = chalk.bgRedBright.black;
+// =========================================================================================== //
+// ==================== CONFIGURACIÓN PUERTO ARDUINO Y NOMBRE SENSOR ========================= //
+// =========================================================================================== //
 const arduinoPort = 'COM3'; //cambiar al adecuado.
 const user = 'Fernando'; //cambiar al usuario adecuado.
 const temperatureLimit = 50; //Change for any value you want
 const humidityLimit = 70; //Change for any value you want
-// ============================================================= //
-
-
-//=========== CAMBIAR ESTA VARIABLE PARA PRODUCCIÓN O DEV ===============//
-const entorno = 'produccion'; //dev o produccion
-const botURL = entorno === 'dev' ? process.env.DEV_URL : process.env.PROD_URL;
-
-// ============================================================= //
-// Importar el esquema de la base de datos y la conexión.
+// =========================================================================================== //
+// ============================= CONFIGURACIÓN MONGO DB======================================= //
+// =========================================================================================== //
 require('./db/mongoose');
 const SensorRecord = require('./models/SensorRecord');
-// ============================================================= //
-
-// ==================== NODE FETCH ==============================//
+// =========================================================================================== //
+// ===================================== NODE FETCH ========================================== //
+// =========================================================================================== //
 const fetch = require('node-fetch');
-
-
-// ============================================================= //
-// Serial Port communication
+// =========================================================================================== //
+// ======================== CONFIGUARACIÓN COMUNICACIÓN SERIAL =============================== //
+// =========================================================================================== //
 const SerialPort = require('serialport');
 const Readline = require('@serialport/parser-readline');
 const port = new SerialPort(arduinoPort, { baudRate: 9600 });
 const parser = port.pipe(new Readline({ delimiter: '\n' }));
-// ============================================================= //
-
-
-// ============================================================= //
-// Este método se llama una vez que inicia la comunicación.
+// =========================================================================================== //
+// ===================== LLAMAR AL INICIAR LA COMUNICACIÓN SERIAL ============================ //
+// =========================================================================================== //
 port.on("open", () => {
     console.clear();
-    console.log("Comunicación serializada iniciada...");
+    console.log("Serial communication started...");
 });
-// ============================================================= //
-
-
-// ============================================================= //
-// Se llama siempre que se recibe info. en el puerto serial.
+// =========================================================================================== //
+// ======================== LLAMAR AL RECIBIR DATOS DEL PUERTO SERIAL ======================== //
+// =========================================================================================== //
 parser.on('data', async (data) => {
 
-    const [temperature, humidity] = data.replace(/\r/ig, '').split(' ');
     console.clear();
+
+    const [temperature, humidity] = data.replace(/\r/ig, '').split(' ');
     let temperatureParsed = Number.parseFloat(temperature);
     let humidityParsed = Number.parseFloat(humidity);
 
@@ -61,26 +65,33 @@ parser.on('data', async (data) => {
         console.log(error);
     }
 
-    console.log(`New record on database - T: ${temperature} - H: ${humidity}`);
+    console.log(`New record on database - Temperature: ${temperature} °C - Humidity: ${humidity} %`);
 
     if (humidityParsed > humidityLimit) {
-        console.log('Hummidity limit reached');
-        const response = await fetch(botURL, {
+        console.log(alertColor('Hummidity limit reached'));
+        await fetch(botURL, {
             method: 'POST',
-            body: JSON.stringify({ sensorType: 'humidity', humidity: humidityParsed, temperature: temperatureParsed }),
+            body: JSON.stringify({
+                sensorType: 'humidity',
+                humidity: humidityParsed,
+                temperature: temperatureParsed
+            }),
             headers: { 'Content-Type': 'application/json' }
         });
     }
 
     if (temperatureParsed > temperatureLimit) {
-        console.log('Temperature limit reached');
-        const response = await fetch(botURL, {
+        console.log(alertColor('Temperature limit reached'));
+        await fetch(botURL, {
             method: 'POST',
-            body: JSON.stringify({ sensorType: 'temperature', humidity: humidityParsed, temperature: temperatureParsed }),
+            body: JSON.stringify({
+                sensorType: 'temperature',
+                humidity: humidityParsed,
+                temperature: temperatureParsed
+            }),
             headers: { 'Content-Type': 'application/json' }
         });
     }
 
-
 });
-// ============================================================= //
+// =========================================================================================== //
