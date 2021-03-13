@@ -45,11 +45,18 @@ parser.on('data', async (data) => {
     console.log(`New record on database - T: ${temperature} - H: ${humidity}`);
 
     if (humidityParsed > humidityLimit) {
-
+        console.log('Hummidity limit reached');
+        const response = await fetch('https://localhost:4000/send-alert', {
+            method: 'POST',
+            body: JSON.stringify({ humidity: humidityParsed }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+        console.log(`Mensaje enviado a telegram`);
+        console.log(response);
     }
 
     if (temperatureParsed > temperatureLimit) {
-
+        console.log('Temperature limit reached');
     }
 
     const sensorData = new SensorRecord({
