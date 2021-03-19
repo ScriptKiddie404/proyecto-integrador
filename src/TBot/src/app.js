@@ -1,3 +1,5 @@
+// https://telegram.me/fertest_bot
+
 require('dotenv').config();
 // ================= BOT REQUIREMENTS ===================== //
 const fetch = require('node-fetch');
