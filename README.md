@@ -1,5 +1,5 @@
-# Repositorio de proyecto integrador.
-A continuación se listan las distintas aplicaciones creadas para el proyecto integrador. Se recomienda probar cada aplicación por separado, es decir, primero descargar todo el repositorio y hacer la instalación de dependencias de cada proyecto de forma independiente (no se realizó un script *runner* debido a que no se requieren instalar todas las dependencias en el mismo directorio).
+# Repositorio Thermal-Care
+A continuación se listan las distintas aplicaciones creadas para el proyecto Thermal-Care. Se recomienda probar cada aplicación por separado, es decir, primero descargar todo el repositorio y hacer la instalación de dependencias de cada proyecto de forma independiente (no se realizó un script *runner* debido a que no se requieren instalar todas las dependencias en el mismo directorio).
 
 ***
 
@@ -25,5 +25,5 @@ npm start
 ***
 ## Contenido
 Aquí se enlistan las distintas aplicaciones que contempla el proyecto, por favor usar este índice para guiarse, cada aplicación tiene su propio `README.md` con las instrucciones necesarias para realizar la intalación y/o configuración.
-1. [Comunicación Serial](src/serialcomm/README.md)
+1. [Comunicación Serial](src/Serial%20communication/README.md)
 2. [Servidor & API](src/server/README.md)
