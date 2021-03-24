@@ -25,5 +25,10 @@ npm start
 ***
 ## Contenido
 Aquí se enlistan las distintas aplicaciones que contempla el proyecto, por favor usar este índice para guiarse, cada aplicación tiene su propio `README.md` con las instrucciones necesarias para realizar la intalación y/o configuración.
+
+0. [Frontend de la aplicación](https://thermal-care.netlify.app/)
 1. [Comunicación Serial](src/Serial%20communication/README.md)
 2. [Servidor & API](src/server/README.md)
+3. [Bot Telegram](src/TBot/README.md)
+
+De momento no se ha agregado al repositorio actual el código del cliente.
