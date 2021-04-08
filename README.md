@@ -30,5 +30,4 @@ Aquí se enlistan las distintas aplicaciones que contempla el proyecto, por favo
 1. [Comunicación Serial](src/Serial%20communication/README.md)
 2. [Servidor & API](src/server/README.md)
 3. [Bot Telegram](src/TBot/README.md)
-
-De momento no se ha agregado al repositorio actual el código del cliente.
+4. [Cliente](src/Client/README.md)
