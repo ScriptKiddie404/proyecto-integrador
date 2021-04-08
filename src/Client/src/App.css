@@ -1,0 +1,859 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/******************************************* GLOBAL STYLES & VARIABLES **************************************/
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Definimos variables para formatear y maquetar diferentes estilos */
+:root {
+    --primary-color: #047aed;
+    --secondary-color: #1c3f88;
+    --dark-color: #002240;
+    --success-color: #5cb85c;
+    --error-color: #d9534f;
+    --light-color: #f4f4f4;
+    --text-color: #fff;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+ul {
+    /* Removemos la decoración */
+    list-style-type: none;
+}
+
+a {
+    /* Removemos los estilos de los enlances */
+    text-decoration: none;
+    color: #333;
+}
+
+h1,
+h2 {
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 10px 0;
+}
+
+p {
+    margin: 10px 0;
+}
+
+img {
+    /* Hacemos que la imagen se mantenga en el contenedor */
+    width: 100%;
+}
+
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/************************************************** NAVIGATION BAR ******************************************/
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+
+.navbar {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    height: 100px;
+}
+
+.container {
+    /* Definimos un máximo en el container de esta forma el logo y la barra de navegación no se separan más de lo necesario,
+    pues ambas están contenidas dentro de dicho contenedor. */
+    max-width: 1100px;
+    margin: 0 auto;
+    /* El margin-top que se le ha dado al h1 hace que la barra esté despegada del top,para reparar esto, debemos usar un overflow:auto  */
+    overflow: auto;
+    padding: 0 40px;
+}
+
+.navbar .flex {
+    justify-content: space-between;
+}
+
+.navbar ul {
+    display: flex;
+}
+
+.navbar a {
+    color: var(--text-color);
+    padding: 10px;
+    margin: 0 5px;
+}
+
+.navbar a:hover {
+    font-weight: bolder;
+}
+
+.navbar h1 {
+    font-weight: bolder;
+}
+
+.logo {
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.logo:hover {
+    font-weight: bolder;
+}
+
+.logo a:hover {
+    border: none;
+}
+
+.logo-navbar h1:hover {
+    border: none;
+}
+
+
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/**************************************************** SHOWCASE **********************************************/
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+
+.showcase {
+    height: 400px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    /* Damos posisción relativa sólo para poder poner posición absoluta en componentes hijos en caso de ser necesario */
+    position: relative;
+}
+
+.showcase h1 {
+    font-size: 40px;
+}
+
+.showcase p {
+    margin: 10px 0;
+    text-align: justify;
+}
+
+.showcase .grid {
+    grid-template-columns: 55% 45%;
+    gap: 30px;
+    /* Esta propiedad se agrega debido al formulario */
+    overflow: visible;
+}
+
+.showcase-form {
+    /* Agregamos la posición relativa sólo para tener acceso a top */
+    position: relative;
+    top: 60px;
+    /* Esta altura hace que la tarjeta se pase del tamaño, tenemos que agregar overflow:visible en el showcase grid */
+    height: 400px;
+    width: 400px;
+    padding: 40px;
+    z-index: 999; /*propiedad random, sólo nos aseguramos que bajo ninguna circunstancia algo tape al formulario */
+    justify-self: flex-end;
+}
+
+.showcase-form .form-control {
+    margin: 30px 0;
+}
+
+/* Estilo a los inputs */
+.showcase-form input[type="text"],
+.showcase-form input[type="email"] {
+    border: 0;
+    border-bottom: 1px solid #b4becb;
+    width: 100%;
+    padding: 3px;
+    font-size: 16px;
+}
+
+/*En caso de querer cambiar el color del palceholder para temas oscuros */
+/* ::placeholder {
+  color: var(--primary-color);
+  opacity: 0.5;
+} */
+
+/* Volvemos el texto más claro para más placer */
+::placeholder {
+    opacity: 0.5;
+}
+
+/* Quitamos el borde culero de los inputs */
+.showcase-form input:focus {
+    outline: none;
+}
+
+/* Animaciones del showcase */
+
+.showcase-text {
+    animation: slideInFromLeft 1s ease-in;
+}
+
+.showcase-form {
+    animation: slideInFromRight 1s ease-in;
+}
+
+
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/************************************************** STATS SECTION *******************************************/
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+
+.stats {
+    padding-top: 150px;
+}
+
+.stats .container {
+    max-width: 100%;
+}
+
+.stats-heading {
+    min-width: 500px;
+    margin: auto;
+}
+
+.stats .grid h3 {
+    font-size: 35px;
+}
+
+.stats .grid p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Animaciones de los stats */
+
+.stats-item {
+    animation: zeroSizeToNormal 1s ease-in;
+}
+
+
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/********************************************** FEATURES ****************************************************/
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+
+.features-header img {
+    width: 200px;
+    /* La imagen está en un grid, podemos alinear al final */
+    justify-self: flex-end;
+    animation: zeroSizeToNormal 0.5s ease-in;
+}
+
+.features-sub-head img,
+.about-sub-head img {
+    width: 200px;
+    /* La imagen está en un grid, podemos alinear al final */
+    justify-self: flex-end;
+    animation: zeroSizeToNormal 0.5s ease-in;
+}
+
+.features-main .card > i {
+    margin-right: 20px;
+    animation: zeroSizeToNormal 0.5s ease-in;
+}
+
+.features-main .grid {
+    padding: 30px;
+}
+
+.features-main .grid .card {
+    grid-column: 1 / span 3;
+}
+
+
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/*********************************************** FOOTER SECTION *********************************************/
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+
+.footer .social a {
+    margin: 0 10px;
+}
+
+.footer .social a i:hover {
+    transform: scale(1.3);
+}
+
+.nav-footer-links li:hover {
+    font-weight: bolder;
+}
+
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/********************************************** ABOUT ****************************************************/
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+
+.about-header img {
+    width: 200px;
+    /* La imagen está en un grid, podemos alinear al final */
+    justify-self: flex-end;
+    animation: zeroSizeToNormal 0.5s ease-in;
+}
+
+.about-sub-head p {
+    text-align: justify;
+}
+
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/********************************************* UTILITIES CLASSES ********************************************/
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+
+/************************************************************************************************************/
+/******************************************* LAYOUT UTILITIES ***********************************************/
+/************************************************************************************************************/
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /*alternativa: repeat(2, 1fr); */
+    gap: 20px;
+    /* Para poder usar las propiedades de centar necesitamos que el el grid tenga altura */
+    height: 100%;
+    /* Ahora ya podemos aplicar los estilos: */
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* ******************************************************************************************************** */
+/********************************************* COMPONENTS UTILITIES *****************************************/
+/* ******************************************************************************************************** */
+
+/* Los estilos para la tarjeta (reutilizables) */
+.card {
+    background-color: var(--text-color);
+    color: #333;
+    border-radius: 0.8em;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    padding: 1em;
+    margin: 1em;
+}
+
+/* Dando formato a los botones clase base */
+.btn {
+    display: inline-block;
+    padding: 10px 30px;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease-in;
+}
+
+.btn:hover {
+    transform: scale(0.9);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--text-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--text-color);
+    color: var(--primary-color);
+}
+
+/* ******************************************************************************************************** */
+/************************************************** TEXT UTILITIES ******************************************/
+/* ******************************************************************************************************** */
+
+.text-center {
+    text-align: center;
+}
+
+.lead {
+    font-size: 20px;
+}
+
+.sm {
+    font-size: 1rem;
+}
+
+.md {
+    font-size: 2rem;
+}
+
+.lg {
+    font-size: 3rem;
+}
+
+.xl {
+    font-size: 4rem;
+}
+
+/* ******************************************************************************************************** */
+/******************************************* MARGIN & PADDING UTILITIES *************************************/
+/* ******************************************************************************************************** */
+/* Margins */
+.my-1 {
+    margin: 1rem 0;
+}
+
+.my-2 {
+    margin: 1.5rem 0;
+}
+
+.my-3 {
+    margin: 2rem 0;
+}
+
+.my-4 {
+    margin: 3rem 0;
+}
+
+.my-5 {
+    margin: 4rem 0;
+}
+
+.m-1 {
+    margin: 1rem;
+}
+
+.m-2 {
+    margin: 1.5rem;
+}
+
+.m-3 {
+    margin: 2rem;
+}
+
+.m-4 {
+    margin: 3rem;
+}
+
+.m-5 {
+    margin: 4rem;
+}
+
+/* Paddings */
+.py-1 {
+    padding: 1rem 0;
+}
+
+.py-2 {
+    padding: 1.5rem 0;
+}
+
+.py-3 {
+    padding: 2rem 0;
+}
+
+.py-4 {
+    padding: 3rem 0;
+}
+
+.py-5 {
+    padding: 4rem 0;
+}
+
+.p-1 {
+    padding: 1rem;
+}
+
+.p-2 {
+    padding: 1.5rem;
+}
+
+.p-3 {
+    padding: 2rem;
+}
+
+.p-4 {
+    padding: 3rem;
+}
+
+.p-5 {
+    padding: 4rem;
+}
+
+/* ******************************************************************************************************** */
+/**************************************** BACKGROUND COLORS AND THAT KIND STUFF *****************************/
+/* ******************************************************************************************************** */
+
+.bg-primary,
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.bg-secondary,
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+.bg-dark,
+.btn-dark {
+    background-color: var(--dark-color);
+    color: #fff;
+}
+
+.bg-light,
+.btn-light {
+    background-color: var(--light-color);
+    color: #333;
+}
+
+/* Estilos a los iconos y botones dentro de contexto dark */
+.bg-primary a,
+.btn-primary a,
+.bg-secondary a,
+.btn-secondary a,
+.bg-dark a,
+.btn-dark a {
+    color: white;
+}
+
+/* ******************************************************************************************************** */
+/******************************************** ALERTS AND MISCELANEOUS ***************************************/
+/* ******************************************************************************************************** */
+.alert {
+    background-color: var(--light-color);
+    padding: 10px 20px;
+    font-weight: bold;
+    margin: 15px 0;
+    border-radius: 5px;
+}
+
+.alert i {
+    margin-right: 10px;
+}
+
+.alert-success {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.alert-error {
+    background-color: var(--error-color);
+    color: white;
+}
+
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/********************************************** ANIMATIONS **************************************************/
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Animación de stats */
+
+@keyframes zeroSizeToNormal {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/************************************* RESPONSIVE DESIGN: MEDIA QUERIES *************************************/
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+/* ******************************************************************************************************** */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .gird,
+    .showcase .grid,
+    .stats .grid,
+    .cli .grid,
+    .cloud .grid,
+    .features-main .grid,
+    .docs-main .grid,
+    .features-header .grid,
+    .features-sub-head .grid,
+    .docs-header .gird,
+    .about-header .grid,
+    .about-sub-head .grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+    }
+
+    .docs-header .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .showcase {
+        height: auto;
+    }
+
+    .showcase-text {
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .showcase-form {
+        justify-self: center;
+    }
+
+    .showcase-text p {
+        text-align: center;
+    }
+
+    /*About media*/
+    .about-header {
+        text-align: center;
+    }
+
+    .about-header h1 {
+        font-size: 3em;
+    }
+
+    .about-sub-head h1 {
+        text-align: center;
+    }
+
+    .about-sub-head p {
+        text-align: center;
+    }
+
+    .about-header img,
+    .about-sub-head img {
+        width: 100px;
+    }
+
+    .about-header img,
+    .about-sub-head img {
+        justify-self: center;
+    }
+
+    /* Se acomodan las filas del CLII */
+    .cli .grid > *:first-child {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .features-header,
+    .features-sub-head,
+    .docs-header {
+        text-align: center;
+    }
+
+    .features-header img,
+    .features-sub-head img,
+    .docs-header img {
+        justify-self: center;
+    }
+
+    .features-main .grid .card {
+        grid-column: 1 / span 1;
+    }
+}
+
+/* Móviles */
+@media (max-width: 500px) {
+    .navbar {
+        height: auto;
+    }
+
+    .navbar .flex {
+        flex-direction: column;
+    }
+
+    .navbar ul {
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .stats .stats-heading {
+        display: inline;
+        text-align: center;
+    }
+
+    .footer .grid {
+        grid-template-columns: 1fr;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .footer p {
+        text-align: center;
+    }
+
+    .footer .grid .nav-footer-links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer h1 {
+        text-align: center;
+    }
+
+    .showcase-text {
+        animation: slideInFromTop 1s ease-in;
+    }
+
+    .showcase-form {
+        animation: slideInFromBottom 1s ease-in;
+    }
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 400px) {
+
+    .navbar {
+        height: auto;
+    }
+
+    .showcase {
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .showcase .grid {
+        /* Esta propiedad se agrega debido al formulario */
+        overflow: visible;
+    }
+
+    .showcase {
+        height: 200px;
+    }
+
+    .showcase::before,
+    .showcase::after {
+        display: none;
+    }
+
+    .showcase .showcase-text p {
+        display: none;
+    }
+
+    .showcase .container {
+        padding: 0;
+    }
+
+    .showcase p {
+        font-size: 10px;
+    }
+
+    .showcase .showcase-form {
+        transform: translateY(-20px);
+    }
+
+    .stats {
+        padding-top: 50px;
+    }
+
+    .footer .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer .container div,
+    nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .footer .container ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer .container .social {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+/* Remove somthing border in logo */
+.nav .container #logo:hover {
+    border-bottom: none;
+}

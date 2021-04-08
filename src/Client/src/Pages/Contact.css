@@ -1,0 +1,69 @@
+.contact-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-section form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 1em 0;
+    padding: 1em;
+    width: 50%;
+}
+
+.contact-section form input[type="submit"] {
+    margin-top: 1em;
+}
+
+.contact-section form .form-control {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 30px 0;
+}
+
+input[type="text"],
+input[type="email"] {
+    border: 0;
+    border-bottom: 1px solid #b4becb;
+    width: 100%;
+    padding: 3px;
+    font-size: 16px;
+}
+
+::placeholder {
+    opacity: 0.5;
+}
+
+.contact-section input:focus {
+    outline: none;
+}
+
+.contact-section .card {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+
+@media (max-width: 500px) {
+    .contact-section .form-control {
+        width: 100%;
+    }
+
+    .contact-section input {
+        width: 100%;
+    }
+
+    .contact-section form {
+        width: 100%;
+    }
+}
